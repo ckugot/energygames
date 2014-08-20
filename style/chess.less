@@ -17,26 +17,32 @@
 
   /* Override chess symbols in game score + two in a row */
   .game-score {
-
     .player-score {
-      margin: 5px;
-      width: @width/4;
-      height: @width/4;
-      line-height: @width/4;
+      @smwidth: @width / 10 * 2;
+      margin: 5px 5px;
+      width: @smwidth /2;
+      height: @smwidth;
+      line-height: @smwidth;
       text-align: center;
-      font-size: 3vw;
+      font-size: 1.6vw;
       font-weight: 700;
-
-    }
-    .game-score-player1 {
-      color: @black;
-      background-color: @white;
       float: left;
     }
-    .game-score-player2 {
+
+    .captured-pieces {
+      width: @width / 10*8;
+      float: left;
+      margin: 5px 0 5px 0;
+    }
+
+    .game-score-player1 .player-score{
       color: @white;
       background-color: @black;
-      float: right;
+    }
+
+    .game-score-player2 .player-score{
+      color: @black;
+      background-color: @white;
     }
 
     .ch {
@@ -88,6 +94,16 @@
       .ch:before{
         font-size: 6vw;
         line-height: @width-full/10;
+      }
+      .player-score {
+        @smwidth: @width-full / 10 * 2;
+        width: @smwidth /2;
+        height: @smwidth;
+        line-height: @smwidth;
+        font-size: 4.5vw;
+      }
+      .captured-pieces {
+        width: @width-full / 10*8;
       }
     }
   }

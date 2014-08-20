@@ -7,6 +7,9 @@
 -   jQuery and Bootstrap JavaScript is not required by this example and therefore not plugged.
 -   Tested to work in current WebKit browsers, may fail in Internet Explorer. By the way, did you know Microsoft announced they are going to rename Internet Explorer because everybody hates it's early versions?
 
+## Known Issues
+- Safari does not calculate subpixels well for years, resulting in a whitespace on the right side of the gaming board.
+
 ## Developers Guide
 -   The same person can play figures of different color. Current Player figures are starting at A1 (on the bottom).
 -   Board figures are descendants of the board squares, thus, current layout implementation makes movement transitions from one square to another hardly possible.

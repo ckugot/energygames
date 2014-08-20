@@ -4,8 +4,8 @@
 
 @space-col: 3vw;
 @space-full: 10vw;
-@width: floor(100vw/3 - @space-col * 2);
-@width-full: floor(100vw/1 - @space-full * 2);
+@width: 100vw/3 - @space-col * 2;
+@width-full: 100vw/1 - @space-full * 2;
 
 /* Background image positions for checkerboard */
 @white-tile: top left;
@@ -185,148 +185,8 @@ h1 {
 /* ------- Board designs ------- */
 
 @import 'checkers.less';
-//@import 'chess.less';
+@import 'chess.less';
 @import 'othello.less';
-
-/* Chess Game styles. Is imported directly in style.css */
-
-.chess {
-  .sq {
-    #generator > .background(@white-tile, @green-tile);
-  }
-
-  .ch {
-    #generator > .checker3D(@white, @black);
-  }
-
-  .ch:before {
-    font-family: 'Chess Usual';
-    font-size: 3vw;
-    line-height: 1;
-  }
-
-  /* Override chess symbols in game score + two in a row */
-  .game-score {
-    .player-score {
-      @smwidth: @width / 10 * 2;
-      margin: 5px 5px;
-      width: @smwidth /2;
-      height: @smwidth;
-      line-height: @smwidth;
-      text-align: center;
-      font-size: 1.6vw;
-      font-weight: 700;
-      float: left;
-    }
-
-    .captured-pieces {
-      width: @width / 10*8;
-      float: left;
-      margin: 5px 0 5px 0;
-    }
-
-    .game-score-player1 .player-score{
-      color: @white;
-      background-color: @black;
-    }
-
-    .game-score-player2 .player-score{
-      color: @black;
-      background-color: @white;
-    }
-
-    .ch {
-      @smwidth: @width / 10;
-      width: @smwidth;
-      height: @smwidth;
-    }
-    .ch:before{
-      font-size: 2vw;
-      line-height: @width/10;
-    }
-    .ch-player1 {
-      color: desaturate(lighten(@black, 7%), 5%);
-      &.ch-king:before {
-        content: 'k';
-      }
-
-      &.ch-queen:before {
-        content: 'q';
-      }
-
-      &.ch-rook:before {
-        content: 'r';
-      }
-
-      &.ch-bishop:before {
-        content: 'b';
-      }
-
-      &.ch-knight:before {
-        content: 'n';
-      }
-
-      &.ch-pawn:before {
-        content: 'p';
-      }
-    }
-  }
-  @media (max-width: @small-screen-breakpoint) {
-    .ch:before {
-      font-size: 8.5vw;
-    }
-    .game-score {
-      .ch{
-        @smwidth: @width-full / 10;
-        width: @smwidth;
-        height: @smwidth;
-      }
-      .ch:before{
-        font-size: 6vw;
-        line-height: @width-full/10;
-      }
-      .player-score {
-        @smwidth: @width-full / 10 * 2;
-        width: @smwidth /2;
-        height: @smwidth;
-        line-height: @smwidth;
-        font-size: 4.5vw;
-      }
-      .captured-pieces {
-        width: @width-full / 10*8;
-      }
-    }
-  }
-}
-
-/* ----- Custom Figures ----- */
-.ch {
-  &.ch-king:before {
-    content: 'l';
-  }
-
-  &.ch-queen:before {
-    content: 'w';
-  }
-
-  &.ch-rook:before {
-    content: 't';
-  }
-
-  &.ch-bishop:before {
-    content: 'v';
-  }
-
-  &.ch-knight:before {
-    content: 'm';
-  }
-
-  &.ch-pawn:before {
-    content: 'o';
-  }
-
-}
-
 
 /* Won/Lost/Etc Notifications */
 .game-notification {

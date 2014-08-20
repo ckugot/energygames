@@ -6,18 +6,18 @@
 
   .ch:before {
     content: '';
-    border-radius: 30px;
+    border-radius: 60px;
     display: block;
     position: relative;
+    background-color: red;
     margin: 0 16%;
-    top: 18%; // vertical offset without margin for proper highlight
-    width: 68%;
-    height: 64%;
+    top: 19%; // vertical offset without margin for proper highlight
+    width: @width/12;
+    height: @width/12;
   }
 
   .ch {
     margin: 0;
-
     #generator > .checkerGem(@white, @black);
   }
 
@@ -46,6 +46,10 @@
   }
 
   @media (max-width: @small-screen-breakpoint) {
+    .ch:before {
+      width: @width-full/12;
+      height: @width-full/12;
+    }
     .game-score {
       .game-score-player1,
       .game-score-player2 {

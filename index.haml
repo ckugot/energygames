@@ -145,8 +145,16 @@
                     - if n<3 && m>=5
                       .ch.ch-player2
 
-                    - else
-                      -# Player 1 is everything else:
+                    -# Player 1 is everything else:
+                    - if sq=='F7' || sq=='F4' || sq=='G4'
+                      .ch.ch-player1
+                    - if n==6 && m>3
+                      .ch.ch-player1
+                    - if n==5 && m>2 || sq=='A5'
+                      .ch.ch-player1
+                    - if n<5 && m<5
+                      .ch.ch-player1
+                    - if sq=='F3' || sq=='G3'
                       .ch.ch-player1
             .scoreboard
               Disks per Player
