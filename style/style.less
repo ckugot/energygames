@@ -1,0 +1,377 @@
+@import 'generators.less';
+
+@small-screen-breakpoint: 768px;
+
+@space-col: 3vw;
+@space-full: 10vw;
+@width: floor(100vw/3 - @space-col * 2);
+@width-full: floor(100vw/1 - @space-full * 2);
+
+/* Background image positions for checkerboard */
+@white-tile: top left;
+@black-tile: top center;
+@green-tile: top right;
+
+/* Figures colors */
+@green: #536440;
+@white: #e6e4cf; // white figures color
+@black: #333338; // black figures color
+@red: #b32520; // red figures color
+
+@bb: #ccc; // board base color
+
+
+/* Basic Styles */
+body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-weight: 300;
+  margin: 1em 0 .5em;
+  color: #0088CE;
+}
+
+/* Opower Logo */
+.brand {
+  background: url(//d3ltyjzd0urran.cloudfront.net/images/layout/header-logo.svg) no-repeat top left;
+  text-indent: -999em;
+  overflow: hidden;
+  width: 184px;
+  height: 32px;
+  &:hover {
+    background-position: bottom left;
+  }
+}
+
+
+
+
+.game {
+  margin-bottom: 3vmax;
+  position: relative;
+  overflow: hidden;
+  padding: 16px 0;
+  border-radius: 5px;
+  &.active {
+    background-color: lighten(@bb, 17%);
+    box-shadow: inset 0 0 1px @bb;
+    // fade in the background when activating a game.
+    // #generator > .transition(background-color .4s ease);
+  }
+}
+
+.game-player {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  overflow: hidden;
+  height: 35px;
+  &:empty:before {
+    content: ' ';
+  }
+}
+
+.game-board {
+  position: relative;
+  overflow: hidden;
+  width: @width;
+  margin: 0 auto;
+  box-shadow:
+    inset 0 0 20px rgba(255, 255, 255, .2),
+    0 1px 0 @bb,
+    0 2px 0 darken(@bb, 2%),
+    0 3px 0 darken(@bb, 4%),
+    0 5px 0 darken(@bb, 6%),
+    0 7px 0 darken(@bb, 8%),
+    0 6px 8px rgba(0, 0, 0, .4),
+    0 8px 1px rgba(0, 0, 0, .4);
+  .sq {
+    position: relative;
+    width: @width/8;
+    height: @width/8;
+    display: block;
+    float: left;
+    background-size: 300% 100%;
+    background-image: url(data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABGAAD/4QMtaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzRFQkE5OTQyMDBFMTFFNEJEOUFCNEJDRDdCNTA0OTUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzRFQkE5OTUyMDBFMTFFNEJEOUFCNEJDRDdCNTA0OTUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozNEVCQTk5MjIwMEUxMUU0QkQ5QUI0QkNEN0I1MDQ5NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozNEVCQTk5MzIwMEUxMUU0QkQ5QUI0QkNEN0I1MDQ5NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/uACZBZG9iZQBkwAAAAAEDABUEAwYKDQAABoIAAAbhAAAJ9AAA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);
+    #generator > .background(@white-tile, @black-tile); // default colors
+  }
+  
+  @media (max-width: @small-screen-breakpoint) {
+    & {
+      width: @width-full;
+      margin: 0 auto;
+      .sq {
+        width: @width-full/8;
+        height: @width-full/8;
+      }
+    }
+  }
+}
+
+/* Playing symbols, default */
+.ch {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  &.ch {
+    color: @white;
+    &:hover {
+      z-index: 2;
+      box-shadow:
+      inset 0 0 6px rgba(192, 153, 45, 0.6),
+      inset 0 0 1px rgb(230, 183, 55),
+      0 0 1px rgb(230, 183, 55),
+      0 0 6px rgba(192, 153, 45, 0.6);
+    }
+  }
+
+}
+
+/* -----Scoreboard ----- */
+.scoreboard {
+  margin-top: 2em;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Default game score layout */
+.game-score {
+  margin: 5px auto 0;
+  width: @width;
+  background-color: #FFF;
+  box-shadow: 0 0 1px @bb;
+  overflow: hidden;
+  text-align: left;
+  .game-score-player1,
+  .game-score-player2{
+    overflow: hidden;
+  }
+  .captured-pieces {
+    height: @width / 8;
+    margin: 0 1.05vw;
+  }
+  .ch {
+    display: block;
+    float: left;
+    width: @width/10;
+    height: @width/10;
+    text-align: center;
+
+    &:before{
+      text-shadow: none;
+      box-shadow: none;
+    }
+    &:hover {
+      box-shadow: none;
+    }
+  }
+  @media (max-width: @small-screen-breakpoint) {
+    & {
+      width: @width-full;
+      .captured-pieces {
+        height: @width-full / 8;
+      }
+      .ch {
+        width: @width-full/10;
+        height: @width-full/10;
+      }
+    }
+  }
+}
+
+/* ------- Board designs ------- */
+
+@import 'checkers.less';
+//@import 'chess.less';
+@import 'othello.less';
+
+/* Chess Game styles. Is imported directly in style.css */
+
+.chess {
+  .sq {
+    #generator > .background(@white-tile, @green-tile);
+  }
+
+  .ch {
+    #generator > .checker3D(@white, @black);
+  }
+
+  .ch:before {
+    font-family: 'Chess Usual';
+    font-size: 3vw;
+    line-height: 1;
+  }
+
+  /* Override chess symbols in game score + two in a row */
+  .game-score {
+    .player-score {
+      @smwidth: @width / 10 * 2;
+      margin: 5px 5px;
+      width: @smwidth /2;
+      height: @smwidth;
+      line-height: @smwidth;
+      text-align: center;
+      font-size: 1.6vw;
+      font-weight: 700;
+      float: left;
+    }
+
+    .captured-pieces {
+      width: @width / 10*8;
+      float: left;
+      margin: 5px 0 5px 0;
+    }
+
+    .game-score-player1 .player-score{
+      color: @white;
+      background-color: @black;
+    }
+
+    .game-score-player2 .player-score{
+      color: @black;
+      background-color: @white;
+    }
+
+    .ch {
+      @smwidth: @width / 10;
+      width: @smwidth;
+      height: @smwidth;
+    }
+    .ch:before{
+      font-size: 2vw;
+      line-height: @width/10;
+    }
+    .ch-player1 {
+      color: desaturate(lighten(@black, 7%), 5%);
+      &.ch-king:before {
+        content: 'k';
+      }
+
+      &.ch-queen:before {
+        content: 'q';
+      }
+
+      &.ch-rook:before {
+        content: 'r';
+      }
+
+      &.ch-bishop:before {
+        content: 'b';
+      }
+
+      &.ch-knight:before {
+        content: 'n';
+      }
+
+      &.ch-pawn:before {
+        content: 'p';
+      }
+    }
+  }
+  @media (max-width: @small-screen-breakpoint) {
+    .ch:before {
+      font-size: 8.5vw;
+    }
+    .game-score {
+      .ch{
+        @smwidth: @width-full / 10;
+        width: @smwidth;
+        height: @smwidth;
+      }
+      .ch:before{
+        font-size: 6vw;
+        line-height: @width-full/10;
+      }
+      .player-score {
+        @smwidth: @width-full / 10 * 2;
+        width: @smwidth /2;
+        height: @smwidth;
+        line-height: @smwidth;
+        font-size: 4.5vw;
+      }
+      .captured-pieces {
+        width: @width-full / 10*8;
+      }
+    }
+  }
+}
+
+/* ----- Custom Figures ----- */
+.ch {
+  &.ch-king:before {
+    content: 'l';
+  }
+
+  &.ch-queen:before {
+    content: 'w';
+  }
+
+  &.ch-rook:before {
+    content: 't';
+  }
+
+  &.ch-bishop:before {
+    content: 'v';
+  }
+
+  &.ch-knight:before {
+    content: 'm';
+  }
+
+  &.ch-pawn:before {
+    content: 'o';
+  }
+
+}
+
+
+/* Won/Lost/Etc Notifications */
+.game-notification {
+  @spacepoint: @width/8;
+  white-space: nowrap;
+  border-radius: 8px;
+  position: absolute;
+  font-weight: 600;
+  z-index: 3;
+  top: 35px + 16px;
+  width: @spacepoint * 5;
+  height: @spacepoint * 5;
+  font-size: @spacepoint * .6;
+  line-height: @spacepoint * 4.75;
+  text-align: center;
+  margin-top: @spacepoint * 1.5;
+  margin-left: @space-col/2 + @spacepoint * 1.5;
+  background-color: fade(lighten(@white, 10%), 90%);
+  box-shadow: 0 10px 20px rgba(0,0,0,.5);
+
+  &.success {
+    color: @green;
+  }
+
+  &.failure {
+    color: @red;
+  }
+
+  &.info {
+    color: @black;
+  }
+
+  @media (max-width: @small-screen-breakpoint) {
+    & {
+      @spacepoint: @width-full/8;
+      width: @spacepoint * 5;
+      height: @spacepoint * 5;
+      font-size: @spacepoint * .6;
+      line-height: @spacepoint * 4.75;
+      margin-top: @spacepoint * 1.5;
+      margin-left: @space-full/2 + @spacepoint * 1.5;
+    }
+
+  }
+
+}
+
+

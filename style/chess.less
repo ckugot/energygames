@@ -1,0 +1,122 @@
+/* Chess Game styles. Is imported directly in style.css */
+
+.chess {
+  .sq {
+    #generator > .background(@white-tile, @green-tile);
+  }
+
+  .ch {
+    #generator > .checker3D(@white, @black);
+  }
+
+  .ch:before {
+    font-family: 'Chess Usual';
+    font-size: 3vw;
+    line-height: 1;
+  }
+
+  /* Override chess symbols in game score + two in a row */
+  .game-score {
+
+    .player-score {
+      margin: 5px;
+      width: @width/4;
+      height: @width/4;
+      line-height: @width/4;
+      text-align: center;
+      font-size: 3vw;
+      font-weight: 700;
+
+    }
+    .game-score-player1 {
+      color: @black;
+      background-color: @white;
+      float: left;
+    }
+    .game-score-player2 {
+      color: @white;
+      background-color: @black;
+      float: right;
+    }
+
+    .ch {
+      @smwidth: @width / 10;
+      width: @smwidth;
+      height: @smwidth;
+    }
+    .ch:before{
+      font-size: 2vw;
+      line-height: @width/10;
+    }
+    .ch-player1 {
+      color: desaturate(lighten(@black, 7%), 5%);
+      &.ch-king:before {
+        content: 'k';
+      }
+
+      &.ch-queen:before {
+        content: 'q';
+      }
+
+      &.ch-rook:before {
+        content: 'r';
+      }
+
+      &.ch-bishop:before {
+        content: 'b';
+      }
+
+      &.ch-knight:before {
+        content: 'n';
+      }
+
+      &.ch-pawn:before {
+        content: 'p';
+      }
+    }
+  }
+  @media (max-width: @small-screen-breakpoint) {
+    .ch:before {
+      font-size: 8.5vw;
+    }
+    .game-score {
+      .ch{
+        @smwidth: @width-full / 10;
+        width: @smwidth;
+        height: @smwidth;
+      }
+      .ch:before{
+        font-size: 6vw;
+        line-height: @width-full/10;
+      }
+    }
+  }
+}
+
+/* ----- Custom Figures ----- */
+.ch {
+  &.ch-king:before {
+    content: 'l';
+  }
+
+  &.ch-queen:before {
+    content: 'w';
+  }
+
+  &.ch-rook:before {
+    content: 't';
+  }
+
+  &.ch-bishop:before {
+    content: 'v';
+  }
+
+  &.ch-knight:before {
+    content: 'm';
+  }
+
+  &.ch-pawn:before {
+    content: 'o';
+  }
+
+}

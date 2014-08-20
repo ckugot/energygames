@@ -1,0 +1,158 @@
+!!! 5
+- letters = ['A','B','C','D','E','F','G','H']
+%html
+  %head
+    %title Opower Energy Games
+    %link{:href => "//fonts.googleapis.com/css?family=Open+Sans:300,500,700", :rel => "stylesheet", :type=>"text/css"}
+    %link{:href => "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", :rel => "stylesheet", :type=>"text/css"}
+    %link{:href => "Font_Chess_Usual/stylesheet.css", :rel => "stylesheet", :type=>"text/css"}
+    %link{:href => "style/style.css", :rel => "stylesheet", :type=>"text/css"}
+    //%link{:href => "//d3ltyjzd0urran.cloudfront.net/assets/application-6ab5f82a5f6d9a343ab8a4e3aefe59e1.css", :rel => "stylesheet", :type=>"text/css"}
+    //%script{:src => "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"}
+  %body
+    .container-fluid
+      %h1.brand Opower
+      %hr/
+      .row
+        .col-sm-4
+          .game.checkers
+            .game-player Princess Bubblegum
+            .game-board
+              - (1...9).each do |i|
+                - (0...8).each do |m|
+                  - l = letters[m]
+                  - n = 9 - i
+                  - sq="#{l}#{n}"
+                  %div{ :class => "sq sq_#{l}#{n}"}
+                    -# Setting up figures
+                    -# Player2:
+                    - if sq=="B8"
+                      .ch.ch-player1
+                    - if sq=="D8"
+                      .ch.ch-player1
+                    - if sq=="F8"
+                      .ch.ch-player1
+                    - if sq=="G7"
+                      .ch.ch-player1
+                    - if sq=="F6"
+                      .ch.ch-player1
+
+                    -# Player 1:
+                    - if sq=="C3"
+                      .ch.ch-player2
+                    - if sq=="E1"
+                      .ch.ch-player2
+                    - if sq=="A1"
+                      .ch.ch-player2
+            .scoreboard
+              Captured Pieces
+              .game-score
+                .game-score-player1
+                  .captured-pieces
+                    - (0...8).each do
+                      .ch.ch-player2
+
+                .game-score-player2
+                  .captured-pieces
+                    - (0...6).each do
+                      .ch.ch-player1
+        .col-sm-4
+          .game.chess.active
+            .game-player Your Turn
+            .game-board
+              - (1...9).each do |i|
+                - (0...8).each do |m|
+                  - l = letters[m]
+                  - n = 9 - i
+                  - sq = "#{l}#{n}"
+                  %div{ :class => "sq sq_#{l}#{n}"}
+                    -# Setting up figures
+                    -# Player 1
+                    - if sq=='B7'
+                      .ch.ch-player1.ch-king
+                    - if sq=='D5'
+                      .ch.ch-player1.ch-pawn
+                    - if sq=='G6'
+                      .ch.ch-player1.ch-bishop
+                    - if sq=='F5'
+                      .ch.ch-player1.ch-pawn
+
+                    -# Player 2:
+                    - if sq=='E4'
+                      .ch.ch-player2.ch-knight
+                    - if sq=='B3'
+                      .ch.ch-player2.ch-pawn
+                    - if sq=='F3'
+                      .ch.ch-player2.ch-king
+                    - if sq=='G2'
+                      .ch.ch-player2.ch-knight
+                    - if sq=='H2'
+                      .ch.ch-player2.ch-queen
+                    - if sq=='B1'
+                      .ch.ch-player2.ch-rook
+                    - if sq=='D1'
+                      .ch.ch-player2.ch-bishop
+                    - if sq=='F1'
+                      .ch.ch-player2.ch-pawn
+            .scoreboard
+              Captured Pieces
+              .game-score
+                .game-score-player1
+                  .player-score 36
+                  .captured-pieces
+                    .ch.ch-player2.ch-queen
+                    .ch.ch-player2.ch-king
+                    .ch.ch-player2.ch-rook
+                    .ch.ch-player2.ch-bishop
+                    .ch.ch-player2.ch-knight
+                    - (0...8).each do
+                      .ch.ch-player2.ch-pawn
+                .game-score-player2
+                  .player-score 22
+                  .captured-pieces
+                    .ch.ch-player1.ch-queen
+                    .ch.ch-player1.ch-king
+                    .ch.ch-player1.ch-rook
+                    .ch.ch-player1.ch-bishop
+                    .ch.ch-player1.ch-knight
+                    - (0...5).each do
+                      .ch.ch-player1.ch-pawn
+
+        .col-sm-4
+          .game.othello
+            .game-player
+            .game-notification.success
+              You Won!
+            .game-board
+              - (1...9).each do |i|
+                - (0...8).each do |m|
+                  - l = letters[m]
+                  - n = 9 - i
+                  - sq = "#{l}#{n}"
+                  %div{ :class => "sq sq_#{l}#{n}"}
+                    -# Setting up figures
+                    -# Player 2:
+                    - if n==8
+                      .ch.ch-player2
+                    - if n==7 && sq!='F7'
+                      .ch.ch-player2
+                    - if n==6 && m<4
+                      .ch.ch-player2
+                    - if sq=='B5' || sq=='C5'
+                      .ch.ch-player2
+                    - if sq=='H4' || sq=='H3'
+                      .ch.ch-player2
+                    - if n<3 && m>=5
+                      .ch.ch-player2
+
+                    - else
+                      -# Player 1 is everything else:
+                      .ch.ch-player1
+            .scoreboard
+              Disks per Player
+              .game-score
+                .game-score-player1
+                  .player-score 43
+
+                .game-score-player2
+                  .player-score 21

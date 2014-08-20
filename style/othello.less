@@ -1,0 +1,60 @@
+/* Othello Game styles. Is imported directly in style.css*/
+.othello {
+  .sq {
+    #generator > .background(@white-tile, @green-tile);
+  }
+
+  .ch:before {
+    content: '';
+    border-radius: 30px;
+    display: block;
+    position: relative;
+    margin: 0 16%;
+    top: 18%; // vertical offset without margin for proper highlight
+    width: 68%;
+    height: 64%;
+  }
+
+  .ch {
+    margin: 0;
+
+    #generator > .checkerGem(@white, @black);
+  }
+
+  .game-score {
+    .game-score-player1,
+    .game-score-player2 {
+      margin: 10px;
+      width: @width/4;
+      height: @width/4;
+      line-height: @width/4;
+      text-align: center;
+      font-size: 3vw;
+      font-weight: 700;
+
+    }
+    .game-score-player1 {
+      color: @black;
+      background-color: @white;
+      float: left;
+    }
+    .game-score-player2 {
+      color: @white;
+      background-color: @black;
+      float: right;
+    }
+  }
+
+  @media (max-width: @small-screen-breakpoint) {
+    .game-score {
+      .game-score-player1,
+      .game-score-player2 {
+        width: @width-full/4;
+        height: @width-full/4;
+        line-height: @width-full/4;
+        font-size: 9vw;
+
+      }
+    }
+  }
+}

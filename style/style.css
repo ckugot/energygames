@@ -1,0 +1,429 @@
+#generator {
+  /* Background generator */
+  /* Transition generator */
+  /* 3D checker look */
+}
+/* Background image positions for checkerboard */
+/* Figures colors */
+/* Basic Styles */
+body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+h1 {
+  font-weight: 300;
+  margin: 1em 0 .5em;
+  color: #0088CE;
+}
+/* Opower Logo */
+.brand {
+  background: url(//d3ltyjzd0urran.cloudfront.net/images/layout/header-logo.svg) no-repeat top left;
+  text-indent: -999em;
+  overflow: hidden;
+  width: 184px;
+  height: 32px;
+}
+.brand:hover {
+  background-position: bottom left;
+}
+.game {
+  margin-bottom: 3vmax;
+  position: relative;
+  overflow: hidden;
+  padding: 16px 0;
+  border-radius: 5px;
+}
+.game.active {
+  background-color: #f7f7f7;
+  box-shadow: inset 0 0 1px #cccccc;
+}
+.game-player {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  overflow: hidden;
+  height: 35px;
+}
+.game-player:empty:before {
+  content: ' ';
+}
+.game-board {
+  position: relative;
+  overflow: hidden;
+  width: 27vw;
+  margin: 0 auto;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2), 0 1px 0 #cccccc, 0 2px 0 #c7c7c7, 0 3px 0 #c2c2c2, 0 5px 0 #bdbdbd, 0 7px 0 #b8b8b8, 0 6px 8px rgba(0, 0, 0, 0.4), 0 8px 1px rgba(0, 0, 0, 0.4);
+}
+.game-board .sq {
+  position: relative;
+  width: 3.375vw;
+  height: 3.375vw;
+  display: block;
+  float: left;
+  background-size: 300% 100%;
+  background-image: url(data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABGAAD/4QMtaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzRFQkE5OTQyMDBFMTFFNEJEOUFCNEJDRDdCNTA0OTUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzRFQkE5OTUyMDBFMTFFNEJEOUFCNEJDRDdCNTA0OTUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozNEVCQTk5MjIwMEUxMUU0QkQ5QUI0QkNEN0I1MDQ5NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozNEVCQTk5MzIwMEUxMUU0QkQ5QUI0QkNEN0I1MDQ5NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/uACZBZG9iZQBkwAAAAAEDABUEAwYKDQAABoIAAAbhAAAJ9AAA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);
+  background-position: top left;
+}
+.game-board .sq:nth-child(16n+2),
+.game-board .sq:nth-child(16n+4),
+.game-board .sq:nth-child(16n+6),
+.game-board .sq:nth-child(16n+8),
+.game-board .sq:nth-child(16n+9),
+.game-board .sq:nth-child(16n+11),
+.game-board .sq:nth-child(16n+13),
+.game-board .sq:nth-child(16n+15) {
+  background-position: top center;
+}
+.game-board .sq:nth-child(16n+8),
+.game-board .sq:nth-child(16n+16) {
+  margin-right: -1px;
+}
+@media (max-width: 768px) {
+  .game-board {
+    width: 80vw;
+    margin: 0 auto;
+  }
+  .game-board .sq {
+    width: 10vw;
+    height: 10vw;
+  }
+}
+/* Playing symbols, default */
+.ch {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.ch.ch {
+  color: #e6e4cf;
+}
+.ch.ch:hover {
+  z-index: 2;
+  box-shadow: inset 0 0 6px rgba(192, 153, 45, 0.6), inset 0 0 1px #e6b737, 0 0 1px #e6b737, 0 0 6px rgba(192, 153, 45, 0.6);
+}
+/* -----Scoreboard ----- */
+.scoreboard {
+  margin-top: 2em;
+  font-size: 16px;
+  text-align: center;
+}
+/* Default game score layout */
+.game-score {
+  margin: 5px auto 0;
+  width: 27vw;
+  background-color: #FFF;
+  box-shadow: 0 0 1px #cccccc;
+  overflow: hidden;
+  text-align: left;
+}
+.game-score .game-score-player1,
+.game-score .game-score-player2 {
+  overflow: hidden;
+}
+.game-score .captured-pieces {
+  height: 3.375vw;
+  margin: 0 1.05vw;
+}
+.game-score .ch {
+  display: block;
+  float: left;
+  width: 2.7vw;
+  height: 2.7vw;
+  text-align: center;
+}
+.game-score .ch:before {
+  text-shadow: none;
+  box-shadow: none;
+}
+.game-score .ch:hover {
+  box-shadow: none;
+}
+@media (max-width: 768px) {
+  .game-score {
+    width: 80vw;
+  }
+  .game-score .captured-pieces {
+    height: 10vw;
+  }
+  .game-score .ch {
+    width: 8vw;
+    height: 8vw;
+  }
+}
+/* ------- Board designs ------- */
+/* Checkers Game styles. Is imported directly in style.css */
+.checkers .sq {
+  background-position: top left;
+}
+.checkers .sq:nth-child(16n+2),
+.checkers .sq:nth-child(16n+4),
+.checkers .sq:nth-child(16n+6),
+.checkers .sq:nth-child(16n+8),
+.checkers .sq:nth-child(16n+9),
+.checkers .sq:nth-child(16n+11),
+.checkers .sq:nth-child(16n+13),
+.checkers .sq:nth-child(16n+15) {
+  background-position: top center;
+}
+.checkers .sq:nth-child(16n+8),
+.checkers .sq:nth-child(16n+16) {
+  margin-right: -1px;
+}
+.checkers .ch.ch-player1 {
+  -webkit-font-smoothing: antialiased;
+  color: #cb312c;
+  text-shadow: 0 0 0 #9d211c, 0 1px 0 #951f1b, 0 2px 0 #7f1a17, 0 3px 0 #721814, 0 4px 1px rgba(0, 0, 0, 0.6), 0 2px 7px rgba(0, 0, 0, 0.4), 0 0px 6px rgba(0, 0, 0, 0.2), 0 0px 16px rgba(0, 0, 0, 0.5);
+}
+.checkers .ch.ch-player2 {
+  -webkit-font-smoothing: antialiased;
+  color: #474747;
+  text-shadow: 0 0 0 #27272b, 0 1px 0 #222225, 0 2px 0 #161618, 0 3px 0 #0f0f10, 0 4px 1px rgba(0, 0, 0, 0.6), 0 2px 7px rgba(0, 0, 0, 0.4), 0 0px 6px rgba(0, 0, 0, 0.2), 0 0px 16px rgba(0, 0, 0, 0.5);
+}
+.checkers .ch:before {
+  content: '\25C9';
+  font-size: 2.8vw;
+  line-height: 1.1;
+}
+.checkers .game-score {
+  padding: 5px 0;
+}
+@media (max-width: 768px) {
+  .checkers .ch:before {
+    font-size: 8.5vw;
+  }
+}
+/* Othello Game styles. Is imported directly in style.css*/
+.othello .sq {
+  background-position: top left;
+}
+.othello .sq:nth-child(16n+2),
+.othello .sq:nth-child(16n+4),
+.othello .sq:nth-child(16n+6),
+.othello .sq:nth-child(16n+8),
+.othello .sq:nth-child(16n+9),
+.othello .sq:nth-child(16n+11),
+.othello .sq:nth-child(16n+13),
+.othello .sq:nth-child(16n+15) {
+  background-position: top right;
+}
+.othello .sq:nth-child(16n+8),
+.othello .sq:nth-child(16n+16) {
+  margin-right: -1px;
+}
+.othello .ch:before {
+  content: '';
+  border-radius: 30px;
+  display: block;
+  position: relative;
+  margin: 0 16%;
+  top: 18%;
+  width: 68%;
+  height: 64%;
+}
+.othello .ch {
+  margin: 0;
+}
+.othello .ch.ch-player1:before {
+  background-color: #f7f7f1;
+  box-shadow: inset 0 -10px 10px #ccc89d, inset 0 1px 8px #f7f7f1, inset 0 0 20px #e6e4cf, 0 2px 5px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.othello .ch.ch-player2:before {
+  background-color: #4b4b53;
+  box-shadow: inset 0 -10px 10px #0f0f10, inset 0 1px 8px #4b4b53, inset 0 0 20px #333338, 0 2px 5px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.othello .game-score .game-score-player1,
+.othello .game-score .game-score-player2 {
+  margin: 10px;
+  width: 6.75vw;
+  height: 6.75vw;
+  line-height: 6.75vw;
+  text-align: center;
+  font-size: 3vw;
+  font-weight: 700;
+}
+.othello .game-score .game-score-player1 {
+  color: #333338;
+  background-color: #e6e4cf;
+  float: left;
+}
+.othello .game-score .game-score-player2 {
+  color: #e6e4cf;
+  background-color: #333338;
+  float: right;
+}
+@media (max-width: 768px) {
+  .othello .game-score .game-score-player1,
+  .othello .game-score .game-score-player2 {
+    width: 20vw;
+    height: 20vw;
+    line-height: 20vw;
+    font-size: 9vw;
+  }
+}
+/* Chess Game styles. Is imported directly in style.css */
+.chess {
+  /* Override chess symbols in game score + two in a row */
+}
+.chess .sq {
+  background-position: top left;
+}
+.chess .sq:nth-child(16n+2),
+.chess .sq:nth-child(16n+4),
+.chess .sq:nth-child(16n+6),
+.chess .sq:nth-child(16n+8),
+.chess .sq:nth-child(16n+9),
+.chess .sq:nth-child(16n+11),
+.chess .sq:nth-child(16n+13),
+.chess .sq:nth-child(16n+15) {
+  background-position: top right;
+}
+.chess .sq:nth-child(16n+8),
+.chess .sq:nth-child(16n+16) {
+  margin-right: -1px;
+}
+.chess .ch.ch-player1 {
+  -webkit-font-smoothing: antialiased;
+  color: #f1f0e7;
+  text-shadow: 0 0 0 #dddbbe, 0 1px 0 #dad7b8, 0 2px 0 #d1cda7, 0 3px 0 #ccc89d, 0 4px 1px rgba(0, 0, 0, 0.6), 0 2px 7px rgba(0, 0, 0, 0.4), 0 0px 6px rgba(0, 0, 0, 0.2), 0 0px 16px rgba(0, 0, 0, 0.5);
+}
+.chess .ch.ch-player2 {
+  -webkit-font-smoothing: antialiased;
+  color: #474747;
+  text-shadow: 0 0 0 #27272b, 0 1px 0 #222225, 0 2px 0 #161618, 0 3px 0 #0f0f10, 0 4px 1px rgba(0, 0, 0, 0.6), 0 2px 7px rgba(0, 0, 0, 0.4), 0 0px 6px rgba(0, 0, 0, 0.2), 0 0px 16px rgba(0, 0, 0, 0.5);
+}
+.chess .ch:before {
+  font-family: 'Chess Usual';
+  font-size: 3vw;
+  line-height: 1;
+}
+.chess .game-score .player-score {
+  margin: 5px 5px;
+  width: 2.7vw;
+  height: 5.4vw;
+  line-height: 5.4vw;
+  text-align: center;
+  font-size: 1.6vw;
+  font-weight: 700;
+  float: left;
+}
+.chess .game-score .captured-pieces {
+  width: 21.6vw;
+  float: left;
+  margin: 5px 0 5px 0;
+}
+.chess .game-score .game-score-player1 .player-score {
+  color: #e6e4cf;
+  background-color: #333338;
+}
+.chess .game-score .game-score-player2 .player-score {
+  color: #333338;
+  background-color: #e6e4cf;
+}
+.chess .game-score .ch {
+  width: 2.7vw;
+  height: 2.7vw;
+}
+.chess .game-score .ch:before {
+  font-size: 2vw;
+  line-height: 2.7vw;
+}
+.chess .game-score .ch-player1 {
+  color: #474747;
+}
+.chess .game-score .ch-player1.ch-king:before {
+  content: 'k';
+}
+.chess .game-score .ch-player1.ch-queen:before {
+  content: 'q';
+}
+.chess .game-score .ch-player1.ch-rook:before {
+  content: 'r';
+}
+.chess .game-score .ch-player1.ch-bishop:before {
+  content: 'b';
+}
+.chess .game-score .ch-player1.ch-knight:before {
+  content: 'n';
+}
+.chess .game-score .ch-player1.ch-pawn:before {
+  content: 'p';
+}
+@media (max-width: 768px) {
+  .chess .ch:before {
+    font-size: 8.5vw;
+  }
+  .chess .game-score .ch {
+    width: 8vw;
+    height: 8vw;
+  }
+  .chess .game-score .ch:before {
+    font-size: 6vw;
+    line-height: 8vw;
+  }
+  .chess .game-score .player-score {
+    width: 8vw;
+    height: 16vw;
+    line-height: 16vw;
+    font-size: 4.5vw;
+  }
+  .chess .game-score .captured-pieces {
+    width: 64vw;
+  }
+}
+/* ----- Custom Figures ----- */
+.ch.ch-king:before {
+  content: 'l';
+}
+.ch.ch-queen:before {
+  content: 'w';
+}
+.ch.ch-rook:before {
+  content: 't';
+}
+.ch.ch-bishop:before {
+  content: 'v';
+}
+.ch.ch-knight:before {
+  content: 'm';
+}
+.ch.ch-pawn:before {
+  content: 'o';
+}
+/* Won/Lost/Etc Notifications */
+.game-notification {
+  white-space: nowrap;
+  border-radius: 8px;
+  position: absolute;
+  font-weight: 600;
+  z-index: 3;
+  top: 51px;
+  width: 16.875vw;
+  height: 16.875vw;
+  font-size: 2.025vw;
+  line-height: 16.03125vw;
+  text-align: center;
+  margin-top: 5.0625vw;
+  margin-left: 6.5625vw;
+  background-color: rgba(247, 247, 241, 0.9);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+.game-notification.success {
+  color: #536440;
+}
+.game-notification.failure {
+  color: #b32520;
+}
+.game-notification.info {
+  color: #333338;
+}
+@media (max-width: 768px) {
+  .game-notification {
+    width: 50vw;
+    height: 50vw;
+    font-size: 6vw;
+    line-height: 47.5vw;
+    margin-top: 15vw;
+    margin-left: 20vw;
+  }
+}
