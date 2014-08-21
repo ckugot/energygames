@@ -31,6 +31,7 @@ h1 {
   overflow: hidden;
   padding: 16px 0;
   border-radius: 5px;
+  text-align: center;
 }
 .game.active {
   background-color: #f7f7f7;
@@ -49,14 +50,15 @@ h1 {
 .game-board {
   position: relative;
   overflow: hidden;
-  width: 27.33333333vw;
-  margin: 0 auto;
+  width: 25.33333333vw;
+  background-color: #cccccc;
+  display: inline-block;
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2), 0 1px 0 #cccccc, 0 2px 0 #c7c7c7, 0 3px 0 #c2c2c2, 0 5px 0 #bdbdbd, 0 7px 0 #b8b8b8, 0 6px 8px rgba(0, 0, 0, 0.4), 0 8px 1px rgba(0, 0, 0, 0.4);
 }
 .game-board .sq {
   position: relative;
-  width: 3.41666667vw;
-  height: 3.41666667vw;
+  width: 3.16666667vw;
+  height: 3.16666667vw;
   display: block;
   float: left;
   background-size: 300% 100%;
@@ -108,7 +110,7 @@ h1 {
 /* Default game score layout */
 .game-score {
   margin: 5px auto 0;
-  width: 27.33333333vw;
+  width: 25.33333333vw;
   background-color: #FFF;
   box-shadow: 0 0 1px #cccccc;
   overflow: hidden;
@@ -119,14 +121,14 @@ h1 {
   overflow: hidden;
 }
 .game-score .captured-pieces {
-  height: 3.41666667vw;
+  height: 3.16666667vw;
   margin: 0 1.05vw;
 }
 .game-score .ch {
   display: block;
   float: left;
-  width: 2.73333333vw;
-  height: 2.73333333vw;
+  width: 2.53333333vw;
+  height: 2.53333333vw;
   text-align: center;
 }
 .game-score .ch:before {
@@ -228,16 +230,16 @@ h1 {
 }
 .chess .game-score .player-score {
   margin: 5px 5px;
-  width: 2.73333333vw;
-  height: 5.46666667vw;
-  line-height: 5.46666667vw;
+  width: 2.53333333vw;
+  height: 5.06666667vw;
+  line-height: 5.06666667vw;
   text-align: center;
   font-size: 1.6vw;
   font-weight: 700;
   float: left;
 }
 .chess .game-score .captured-pieces {
-  width: 21.86666667vw;
+  width: 20.26666667vw;
   float: left;
   margin: 5px 0 5px 0;
 }
@@ -250,12 +252,12 @@ h1 {
   background-color: #e6e4cf;
 }
 .chess .game-score .ch {
-  width: 2.73333333vw;
-  height: 2.73333333vw;
+  width: 2.53333333vw;
+  height: 2.53333333vw;
 }
 .chess .game-score .ch:before {
   font-size: 2vw;
-  line-height: 2.73333333vw;
+  line-height: 2.53333333vw;
 }
 .chess .game-score .ch-player1 {
   color: #474747;
@@ -345,8 +347,8 @@ h1 {
   background-color: red;
   margin: 0 16%;
   top: 19%;
-  width: 2.27777778vw;
-  height: 2.27777778vw;
+  width: 2.11111111vw;
+  height: 2.11111111vw;
 }
 .othello .ch {
   margin: 0;
@@ -362,9 +364,9 @@ h1 {
 .othello .game-score .game-score-player1,
 .othello .game-score .game-score-player2 {
   margin: 10px;
-  width: 6.83333333vw;
-  height: 6.83333333vw;
-  line-height: 6.83333333vw;
+  width: 6.33333333vw;
+  height: 6.33333333vw;
+  line-height: 6.33333333vw;
   text-align: center;
   font-size: 3vw;
   font-weight: 700;
@@ -401,13 +403,13 @@ h1 {
   z-index: 3;
   top: 51px;
   left: 50%;
-  margin-left: -8.54166667vw;
-  width: 17.08333333vw;
-  height: 17.08333333vw;
-  font-size: 2.05vw;
-  line-height: 16.22916667vw;
+  margin-left: -7.91666667vw;
+  width: 15.83333333vw;
+  height: 15.83333333vw;
+  font-size: 1.9vw;
+  line-height: 15.04166667vw;
   text-align: center;
-  margin-top: 5.125vw;
+  margin-top: 4.75vw;
   background-color: rgba(247, 247, 241, 0.9);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }

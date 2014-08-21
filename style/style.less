@@ -2,7 +2,7 @@
 
 @small-screen-breakpoint: 768px;
 
-@space-col: 3vw;
+@space-col: 4vw;
 @space-full: 10vw;
 @width: 100vw/3 - @space-col * 2;
 @width-full: 100vw/1 - @space-full * 2;
@@ -50,6 +50,7 @@ h1 {
   overflow: hidden;
   padding: 16px 0;
   border-radius: 5px;
+  text-align: center;
   &.active {
     background-color: lighten(@bb, 17%);
     box-shadow: inset 0 0 1px @bb;
@@ -73,7 +74,9 @@ h1 {
   position: relative;
   overflow: hidden;
   width: @width;
-  margin: 0 auto;
+  background-color: @bb;
+  //margin: 0 auto;
+  display: inline-block;
   box-shadow:
     inset 0 0 20px rgba(255, 255, 255, .2),
     0 1px 0 @bb,
