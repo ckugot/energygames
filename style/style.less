@@ -191,13 +191,14 @@ h1 {
   font-weight: 600;
   z-index: 3;
   top: 35px + 16px;
+  left: 50%;
+  margin-left: -(@spacepoint * 5)/2;
   width: @spacepoint * 5;
   height: @spacepoint * 5;
   font-size: @spacepoint * .6;
   line-height: @spacepoint * 4.75;
   text-align: center;
   margin-top: @spacepoint * 1.5;
-  margin-left: @space-col/2 + @spacepoint * 1.5;
   background-color: fade(lighten(@white, 10%), 90%);
   box-shadow: 0 10px 20px rgba(0,0,0,.5);
 
@@ -221,7 +222,7 @@ h1 {
       font-size: @spacepoint * .6;
       line-height: @spacepoint * 4.75;
       margin-top: @spacepoint * 1.5;
-      margin-left: @space-full/2 + @spacepoint * 1.5;
+      margin-left: -(@spacepoint * 5)/2;
     }
 
   }

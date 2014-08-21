@@ -400,13 +400,14 @@ h1 {
   font-weight: 600;
   z-index: 3;
   top: 51px;
+  left: 50%;
+  margin-left: -8.54166667vw;
   width: 17.08333333vw;
   height: 17.08333333vw;
   font-size: 2.05vw;
   line-height: 16.22916667vw;
   text-align: center;
   margin-top: 5.125vw;
-  margin-left: 6.625vw;
   background-color: rgba(247, 247, 241, 0.9);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
@@ -426,6 +427,6 @@ h1 {
     font-size: 6vw;
     line-height: 47.5vw;
     margin-top: 15vw;
-    margin-left: 20vw;
+    margin-left: -25vw;
   }
 }
