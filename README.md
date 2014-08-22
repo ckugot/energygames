@@ -7,7 +7,7 @@
 -   Tested to work in current WebKit and Firefox browsers. Did you know Microsoft announced they are going to rename Internet Explorer because everybody hates it's early versions?
 
 ## Known Issues
-- Safari rendering engine does not calculate subpixels (i.e. 5.472px) well for years, resulting in a whitespace on the right side of the gaming board. Chrome renders them much wiser.
+- Safari rendering engine does not calculate subpixels (i.e. 5.472px) well for years, resulting in a whitespace on the right side of the gaming board. Chrome renders them much wiser. There are two more ways to create the layout of the board: good old tables and new promising flexbox.
 
 ## Developers Guide
 -   The same person can play figures of different color. Current Player figures are starting at A1 (on the bottom).
