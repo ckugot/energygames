@@ -1,4 +1,5 @@
 # Web Lead Homework
+[Live Preview](http://ckugot.github.io/energygames/)
 
 ## Technical Notes
 -   Game boards HTML layout is generated from the HAML, Ruby equations are used to quickly set up figures on board. See .haml for the structure
